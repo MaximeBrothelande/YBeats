@@ -8,8 +8,8 @@ class Music extends Model
 {
     protected $fillable = [
     'id',
-    'name',
-    'author',
+    'title',
+    'author_id',
     'descrip',
     'price',
     'dispo'
@@ -19,4 +19,5 @@ class Music extends Model
       'created_at',
       'updated_at',
     ];
+
 }

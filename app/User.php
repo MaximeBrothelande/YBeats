@@ -41,4 +41,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function musics(){
+        return $this->hasMany('App\Music','author_id','id');
+    }
+
 }
