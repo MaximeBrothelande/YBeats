@@ -45,7 +45,7 @@
                     <div class="well">
                         <p>Mes beats</p>
 
-                        <table>
+                        <table class="table">
                             <thead>
                             <tr>
                                 <td>Titre</td>

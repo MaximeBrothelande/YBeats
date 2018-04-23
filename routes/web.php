@@ -23,6 +23,9 @@ Route::get('/Test', function (){
 });
 
 
+Route::post('/cart/add','CartController@postAddToCart');
+Route::get('/cart', 'CartController@showCart');
+
 
 
 
@@ -31,6 +34,7 @@ Route::get('/Test', function (){
 
 Route::auth();
 
+/*
 Route::get('/login', function (){
    return view('Login/login');
 });
@@ -41,4 +45,4 @@ Route::post('register','Auth\LoginController@login');
 
 Route::get('/register',function (){
    return view('Login/register');
-});
+});*/

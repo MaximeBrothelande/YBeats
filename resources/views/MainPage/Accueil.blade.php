@@ -11,7 +11,7 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-8">
-                <table>
+                <table class="table">
                     <thead>
                     <tr>
                         <td>id</td>
@@ -30,7 +30,10 @@
                                         <source src={{$value->link}} type="audio/mpeg">
                                     </audio>
                                 </div></td>
-                            <td>ajouter</td>
+                            <td><form action="/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
+                                    <input type="hidden" name="book" value="{{$value->id}}" />
+                                    <p align="center"><button class="btn btn-info btn-block">Add to Cart</button></p>
+                                </form></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -47,7 +50,7 @@
             <div class="col-sm-2">
             </div>
             <div class="col-sm-8">
-                <table>
+                <table class="table">
                     <thead>
                     <tr>
                         <td>pic</td>

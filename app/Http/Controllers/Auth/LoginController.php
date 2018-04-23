@@ -37,10 +37,6 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function login()
-    {
-        return view('Login.login',compact('email','password'));
-    }
 
     public function logout(Request $request)
     {
@@ -87,6 +83,6 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        return ['email' => $request->{$this->username()}, 'password' => $request->password, 'status' => 1];
+        return ['email' => $request->{$this->username()}, 'password' => $request->password];
     }
 }

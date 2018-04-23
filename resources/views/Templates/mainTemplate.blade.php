@@ -89,23 +89,16 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @endif
                 @else
-                    <li class="dropdown">
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                            @if(Auth::user()->admin)
-                                <li>{!! link_to_route('personne.create','Ajouter un utilisateur admin') !!}</li>
-                            @endif
-                        </ul>
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 @endif
             </ul>
