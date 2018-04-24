@@ -58,6 +58,7 @@
 
             #aPlayer > audio { width: 420px; }
         }
+
     </style>
 </head>
 
@@ -89,6 +90,9 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @endif
                 @else
+                    <li><a href="{{url('/cart')}}">My cart</a></li>
+                    <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}}</a></li>
+
                     <li>
                         <a href="{{ url('/logout') }}"
                            onclick="event.preventDefault();
@@ -101,6 +105,7 @@
                         </form>
                     </li>
                 @endif
+
             </ul>
         </div>
     </div>

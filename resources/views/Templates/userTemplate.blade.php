@@ -55,6 +55,14 @@
             background-color: #f2f2f2;
             padding: 25px;
         }
+        .owi12{
+            height: 150px;
+
+        }
+        .owi13{
+            min-width: 200px;
+            height: 150px;
+        }
     </style>
 </head>
 <body>
@@ -73,7 +81,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/MusicApp/public/index.php/music">Accueil</a></li>
-                <li><a href="">Artistes</a></li>
+                <li><a href="/MusicApp/public/index.php/artists">Artistes</a></li>
                 <li><a href="#">Forum</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
@@ -85,25 +93,29 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @endif
                 @else
-                    <li class="dropdown">
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                            @if(Auth::user()->admin)
-                                <li>{!! link_to_route('personne.create','Ajouter un utilisateur admin') !!}</li>
-                            @endif
-                        </ul>
+                    <li><a href="{{url('/cart')}}">My cart</a></li>
+                    <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}}</a></li>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <!-- TEST -->
+
+
+                        </li>
+                    </ul>
+
+                    <li>
+                        <a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 @endif
+
             </ul>
         </div>
     </div>

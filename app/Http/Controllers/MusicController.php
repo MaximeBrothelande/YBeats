@@ -16,16 +16,9 @@ class MusicController extends Controller
      */
     public function index()
     {
-        //
         $music = Music::all();
         $user = User::all();
-        /*$user=DB::table('musics')
-            ->join('users','musics.author_id','=','users.id')
-            ->distinct()
-            ->get();
 
-
-*/
         //dd($music);
         return view('MainPage.Accueil',compact('music','user'));
     }

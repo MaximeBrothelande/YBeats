@@ -12,6 +12,8 @@
 */
 Route::resource('music','MusicController');
 Route::resource('user','UserController');
+Route::auth();
+
 
 
 //Page accueil Laravel - TEST
@@ -22,27 +24,20 @@ Route::get('/Test', function (){
    return view('Templates/mainTemplate');
 });
 
-
-Route::post('/cart/add','CartController@postAddToCart');
-Route::get('/cart', 'CartController@showCart');
-
-
+/*Route::get('/music', ['as' => 'music', function () {
+    return view('MainPage.Accueil');
+}]);*/
 
 
-//Routes LOGIN/REGISTER a revoir
+//Test CART
+
+Route::get('/cart', array('before'=>'auth.basic','as'=>'cart','uses'=>'CartController@getIndex'));
+Route::post('/cart/add', array('before'=>'auth.basic','uses'=>'CartController@postAddToCart'));
+Route::get('/cart/delete/{id}', array('before'=>'auth.basic','as'=>'delete_music_from_cart','uses'=>'CartController@getDelete'));
+
+//Route::post('/cart/add','CartController@postAddToCart');
+//Route::get('/cart', 'CartController@showCart');
 
 
-Route::auth();
 
-/*
-Route::get('/login', function (){
-   return view('Login/login');
-});
 
-route::post('login','Auth\LoginController@logout');
-
-Route::post('register','Auth\LoginController@login');
-
-Route::get('/register',function (){
-   return view('Login/register');
-});*/

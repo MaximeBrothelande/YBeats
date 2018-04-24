@@ -9,31 +9,31 @@
 
 
         <div class="col-sm-9">
-            <div class="well">
+            <div class="well owi12">
                 <h4>Ce que je fait</h4>
-                <p>Some text..</p>
+                <p>{{$user->biograph}}</p>
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="well">
+                    <div class="well owi12">
 
                         <p>photo</p>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="well">
+                    <div class="well owi12">
                         <h4>Nom</h4>
                         <p>{{$user->name}}</p>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="well">
+                    <div class="well owi12">
                         <h4>Ventes</h4>
                         <p> *** <!-- where {id} = {Author_id} AND count where {dispo}=0--> beat(s) vendu(s)</p>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="well">
+                <div class="col-sm-3 ">
+                    <div class="well owi13">
                         <h4>Contact</h4>
                         <p>{{$user->email}}</p>
                     </div>
@@ -41,7 +41,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 ">
                     <div class="well">
                         <p>Mes beats</p>
 
@@ -66,7 +66,10 @@
                                             </audio>
                                         </div></td>
                                     <td>{{$value->price}}€</td>
-                                    <td>ajouter</td>
+                                    <td>
+
+
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

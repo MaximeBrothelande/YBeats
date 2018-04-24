@@ -30,8 +30,9 @@
                                         <source src={{$value->link}} type="audio/mpeg">
                                     </audio>
                                 </div></td>
-                            <td><form action="/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
-                                    <input type="hidden" name="book" value="{{$value->id}}" />
+                            <td><form action="{{url('/cart/add')}}" name="add_to_cart" method="post" accept-charset="UTF-8" >
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="music" value="{{$value->id}}" />
                                     <p align="center"><button class="btn btn-info btn-block">Add to Cart</button></p>
                                 </form></td>
                         </tr>
