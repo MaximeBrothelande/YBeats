@@ -1,13 +1,14 @@
+<!-- FORMULAIRE D'UPLOAD DE MUSIQUES -->
 @extends('Templates.userTemplate')
 
+@section('title','Ajout de beat')
 
 @section('content')
+
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-1 ">
         </div>
-
-
         <div class="col-sm-9">
             <div class="well owi12">
                 <h4>Ce que je fait</h4>
@@ -62,22 +63,31 @@
                                     <td>{{$value->descrip}}</td>
                                     <td><div id="aPlayer">
                                             <audio controls >
-                                                <source src=../{{$value->link}} type="audio/mpeg">
+                                                <source src=../{{$value->Preview}} type="audio/mpeg">
                                             </audio>
                                         </div></td>
                                     <td>{{$value->price}}€</td>
                                     <td>
 
-
                                     </td>
                                 </tr>
                             @endforeach
+                            {{ Form::open(array('url' => 'user')) }}
+                                <tr>
+                                    <td>{{ Form::text('title', null,array('class' => 'form-control'))}}</td>
+                                    <td>{{ Form::text('descrip', null,array('class' => 'form-control'))}}</td>
+                                    <td>{{ Form::file('link', array('required' => '')) }}</td>
+                                    <td>{{ Form::text('price', null,array('class' => 'form-control'))}}</td>
+                                    <td>{{ Form::submit('upload', array('class' => 'btn btn-primary')) }}</td>
+                                </tr>
+                            {{ Form::close() }}
                             </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
 </div>
+
 
 @endsection

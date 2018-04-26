@@ -31,7 +31,7 @@
         }
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 760px;}
+        .row.content {height: 100%;}
 
         /* Set gray background color and 100% height */
         .sidenav {
@@ -54,6 +54,9 @@
         footer {
             background-color: #f2f2f2;
             padding: 25px;
+            z-index: 10;
+            position: relative;
+
         }
         .owi12{
             height: 150px;
@@ -62,6 +65,14 @@
         .owi13{
             min-width: 200px;
             height: 150px;
+
+        }
+        .owi11{
+            clear: both;
+            position: relative;
+            z-index: 10;
+            height: 3em;
+            margin-top: -3em;
         }
     </style>
 </head>
@@ -88,31 +99,31 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}"><span class=glyphicon glyphicon-log-in"></span>Login</a></li>
+                    <li><a href="{{ url('/login') }}"><span class=glyphicon glyphicon-log-in"></span>Connexion</a></li>
                     @if(App::environment() =='local')
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/register') }}">S'inscrire</a></li>
                     @endif
                 @else
-                    <li><a href="{{url('/cart')}}">My cart</a></li>
-                    <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}}</a></li>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <!-- TEST -->
-
-
-                        </li>
-                    </ul>
-
-                    <li>
-                        <a href="{{ url('/logout') }}"
-                           onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            Logout
+                    <li><a href="{{url('/cart')}}">Mon panier</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="bordered inverted teal user icon"></i>{{ Auth::user()->name }} <span class="caret"> </span>
                         </a>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}">Profil</a></li>
+                            <li><a href="{{url('/user/create')}}">Ajout de musique</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Déconnexion
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 @endif
 
@@ -128,9 +139,14 @@
 
 @yield('content')
 
-<footer class="container-fluid text-center">
-    <p>Footer Text</p>
-</footer>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="well owi1">
+            <p>Footer Text</p>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

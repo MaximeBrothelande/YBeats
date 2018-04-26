@@ -27,13 +27,13 @@
                             <td>{{$value->title}}</td>
                             <td><div id="aPlayer">
                                     <audio controls >
-                                        <source src={{$value->link}} type="audio/mpeg">
+                                        <source src={{$value->Preview}} type="audio/mpeg">
                                     </audio>
                                 </div></td>
                             <td><form action="{{url('/cart/add')}}" name="add_to_cart" method="post" accept-charset="UTF-8" >
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="music" value="{{$value->id}}" />
-                                    <p align="center"><button class="btn btn-info btn-block">Add to Cart</button></p>
+                                    <p align="center"><button class="btn btn-info btn-block">Ajouter au panier</button></p>
                                 </form></td>
                         </tr>
                     @endforeach
@@ -54,9 +54,9 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <td>pic</td>
-                        <td>name</td>
-                        <td>musics</td>
+                        <td>Photo</td>
+                        <td>Nom</td>
+                        <td>Beats</td>
                     </tr>
                     </thead>
                     <tbody>

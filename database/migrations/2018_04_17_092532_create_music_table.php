@@ -21,6 +21,7 @@ class CreateMusicTable extends Migration
             $table->string('author_id');
             $table->boolean('dispo');
             $table->string('link');
+            $table->string('preview');
 
             $table->timestamps();
         });

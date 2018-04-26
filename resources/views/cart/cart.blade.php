@@ -31,7 +31,7 @@
                         {{$value->total}}
                     </td>
                     <td>
-                        <a href="{{URL::route('delete_music_from_cart',array($value->id))}}">Delete</a>
+                        <a href="{{URL::route('delete_music_from_cart',array($value->id))}}">Supprimer</a>
                     </td>
                 </tr>
             @endforeach
@@ -51,8 +51,27 @@
             </tr>
             </tbody>
         </table>
-        <form action="/order" method="post" accept-charset="UTF-8">
+        <form action="{{url('order')}}" method="post" accept-charset="UTF-8">
+            {{ csrf_field() }}
+
+            <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_pIaGoPD69OsOWmh1FIE8Hl4J"
+                    data-amount="{{$cart_total*100}}"
+                    data-name="Payement"
+                    data-description="Online course about integrating Stripe"
+                    data-image="../images/icone.png"
+                    data-locale="auto"
+                    data-currency="eur">
+            </script>
+            <script>
+                document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+            </script>
             <button class="btn btn-block btn-primary btn-large">Place order</button>
         </form>
+
+
+
+
     </div>
 @stop

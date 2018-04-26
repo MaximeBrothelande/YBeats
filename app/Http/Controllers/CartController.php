@@ -34,7 +34,7 @@ class CartController extends Controller
         $total = $music->price;
         $count = Cart::where('id','=',$music_id)->count();
         if($count){
-            return Redirect::route('music')->with('error','Already in cart');
+            return Redirect::route('music')->with('error','Déjà dans le panier');
 
         }
 
@@ -60,7 +60,7 @@ class CartController extends Controller
 
         //dd($cart_music);
         if (!$cart_music) {
-            return Redirect::route('index')->with('error', 'Your cart is empty');
+            return Redirect::route('index')->with('error', 'Le panier est vide');
         }
 
         return view('cart.cart', compact('cart_total', 'cart_music'));

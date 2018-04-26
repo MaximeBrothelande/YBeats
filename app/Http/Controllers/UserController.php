@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Music;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use falahati\PHPMP3;
 
 class UserController extends Controller
 {
@@ -23,6 +25,9 @@ class UserController extends Controller
         //
     }
 
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +35,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user=Auth::user();
+        $music=DB::table('musics')
+            ->join('users','musics.author','=','users.id')
+            ->where('musics.author','=',$user->id)
+            ->get();
+
+        return view('User.create',compact('user','music'));
     }
 
     /**
@@ -41,7 +52,35 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $author = Auth::user()->id;
+        $rules = array(
+            'title'=>'required',
+            //'link'=>'required',
+            'price'=>'required|numeric'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        $title = Input::get('title');
+        $preview = PHPMP3\MpegAudio::fromFile(Input::get('link'))->trim(0,30)->saveFile('prev'.$title.'.mp3');
+
+
+        if ($validator->fails()) {
+            return Redirect::to('user')
+                ->withErrors($validator);
+        } else {
+            // store
+            $music = new Music;
+            $music->author = $author;
+            $music->dispo = '1';
+            $music->title = Input::get('title');
+            $music->descrip = Input::get('descrip');
+            $music->price = Input::get('price');
+            $music->link = '../'.Input::get('link');
+            $music->preview='../prev'.$title.'.mp3';
+            $music->save();
+            // redirect
+            Session::flash('message', 'Successfully created nerd!');
+            return Redirect::to('user/create');
+        }
     }
 
     /**

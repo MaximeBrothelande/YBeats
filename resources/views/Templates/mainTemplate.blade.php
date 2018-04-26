@@ -63,7 +63,6 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -85,24 +84,32 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}"><span class=glyphicon glyphicon-log-in"></span>Login</a></li>
+                    <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
                     @if(App::environment() =='local')
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/register') }}">S'inscrire</a></li>
                     @endif
                 @else
-                    <li><a href="{{url('/cart')}}">My cart</a></li>
-                    <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}">{{Auth::user()->name}}</a></li>
-
-                    <li>
-                        <a href="{{ url('/logout') }}"
-                           onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            Logout
+                    <li><a href="{{url('/cart')}}"><span class="glyphicon glyphicon-shopping-cart"></span> Mon panier</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="bordered inverted teal user icon"></i>{{ Auth::user()->name }} <span class="caret"> </span>
                         </a>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{url('/user/'.Auth::user()->id.'/edit')}}"><span class="	glyphicon glyphicon-user"></span> Mon profil </a></li>
+                            <li><a href="{{url('/user/create')}}"><span class="glyphicon glyphicon-upload"></span> Ajout de musique</a></li>
+                            <li><a href="{{url('/orders')}}"><span class="glyphicon glyphicon-download"></span> Mes commandes</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="glyphicon glyphicon-log-out"></span>
+                                    Déconnexion
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 @endif
 
