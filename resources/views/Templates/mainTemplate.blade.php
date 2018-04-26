@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 
     <style>
         /* Remove the navbar's default margin-bottom and rounded borders */
@@ -71,14 +73,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img src="/images">
+            <img src="../images/logo.png">
 
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/MusicApp/public/index.php/music">Accueil</a></li>
                 <li><a href="/MusicApp/public/index.php/artists">Artistes</a></li>
-                <li><a href="#">Forum</a></li>
+                <li><a href="/MusicApp/public/index.php/forum">Forum</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -131,24 +133,24 @@
         <div class="item active">
             <img src="../images/background1.jpg" alt="Image">
             <div class="carousel-caption">
-                <h3>Quelques tests</h3>
-                <p>Et encore</p>
+                <h3>Découvrez les artistes et les beatmakers</h3>
+                <p>et achetez les intrus qui vous correspondent!</p>
             </div>
         </div>
 
         <div class="item">
             <img src="../images/background2.jpg" alt="Image">
             <div class="carousel-caption">
-                <h3>Quelques tests</h3>
-                <p>Et encore</p>
+                <h3>Bénéficiez de réductions sur les beats</h3>
+                <p>avec l'abonnement Ybeats</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="https://placehold.it/1200x400?text=IMAGE" alt="Image">
+            <img src="../images/background4.jpg" alt="Image">
             <div class="carousel-caption">
-                <h3>Quelques tests</h3>
-                <p>Et encore</p>
+                <h3>Studio d'enregistrement:</h3>
+                <p>Disponible prochainement</p>
             </div>
     </div>
 
@@ -162,12 +164,14 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+</div>
 
     @yield('content')
 
 
 <footer class="container-fluid text-center">
-    <p>Footer Text</p>
+    <i class="fab fa-facebook-f"><a href="#"> Facebook</a></i>
+    <i class="fab fa-instagram"><a href="#"> Instagram</a></i>
 </footer>
 
 </body>

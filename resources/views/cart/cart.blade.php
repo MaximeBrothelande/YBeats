@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container" style="width:60%">
-        <h1>Your Cart</h1>
+        <h1>Mon panier</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -67,7 +67,7 @@
             <script>
                 document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
             </script>
-            <button class="btn btn-block btn-primary btn-large">Place order</button>
+            <button class="btn btn-block btn-primary btn-large">Payement</button>
         </form>
 
 

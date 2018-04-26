@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <title>YBeat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+            min-height:200px;
+            max-height: 300px;
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+
+
+        #aPlayer > audio { width: 100% }
+        /* Chrome 29+ */
+        @media  screen and (-webkit-min-device-pixel-ratio:0)
+        and (min-resolution:.001dpcm) {
+            /* HIDE DOWNLOAD AUDIO BUTTON */
+            #aPlayer {
+                overflow: hidden;width: 390px;
+            }
+
+            #aPlayer > audio { width: 420px; }
+        }
+
+        /* Chrome 22-28 */
+        @media  screen and(-webkit-min-device-pixel-ratio:0) {
+
+            #aPlayer {
+                overflow: hidden;width: 390px;
+            }
+
+            #aPlayer > audio { width: 420px; }
+        }
+
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="/images">
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="/MusicApp/public/index.php/music">Accueil</a></li>
+                <li><a href="/MusicApp/public/index.php/artists">Artistes</a></li>
+                <li><a href="#">Forum</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><!-- Authentication Links -->
+                </li><li><a href="http://localhost/MusicApp/public/index.php/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Mon panier</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="bordered inverted teal user icon"></i>TestName <span class="caret"> </span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="http://localhost/MusicApp/public/index.php/user/1/edit"><span class="	glyphicon glyphicon-user"></span> Mon profil </a></li>
+                        <li><a href="http://localhost/MusicApp/public/index.php/user/create"><span class="glyphicon glyphicon-upload"></span> Ajout de musique</a></li>
+                        <li><a href="http://localhost/MusicApp/public/index.php/orders"><span class="glyphicon glyphicon-download"></span> Mes commandes</a></li>
+                        <li>
+                            <a href="http://localhost/MusicApp/public/index.php/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="glyphicon glyphicon-log-out"></span>
+                                Déconnexion
+                            </a>
+                            <form id="logout-form" action="http://localhost/MusicApp/public/index.php/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_token" value="10eJUaO68yRcE8WQv4YVkTskc89WEG5DrXr9WRft">
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active left">
+            <img src="../images/background1.jpg" alt="Image">
+            <div class="carousel-caption">
+                <h3>Découvrez les artistes et les beatmakers</h3>
+                <p>et achetez les intrus qui vous correspondent!</p>
+            </div>
+        </div>
+
+        <div class="item next left">
+            <img src="../images/background2.jpg" alt="Image">
+            <div class="carousel-caption">
+                <h3>Bénéficiez de réductions sur les beats</h3>
+                <p>avec l'abonnement Ybeats</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="../images/background4.jpg" alt="Image">
+            <div class="carousel-caption">
+                <h3>Studio d'enregistrement:</h3>
+                <p>Disponible prochainement</p>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
+    <div class="container text-center">
+        <h3>Dernières sorties</h3><br>
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>titre</td>
+                        <td>preview</td>
+                        <td>ajouter</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>10</td>
+                        <td>Beat01</td>
+                        <td><div id="aPlayer">
+                            <audio controls="">
+                                <source src="../prevBeat01.mp3" type="audio/mpeg">
+                            </audio>
+                        </div></td>
+                        <td><form action="http://localhost/MusicApp/public/index.php/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
+                            <input type="hidden" name="_token" value="10eJUaO68yRcE8WQv4YVkTskc89WEG5DrXr9WRft">
+                            <input type="hidden" name="music" value="10">
+                            <p align="center"><button class="btn btn-info btn-block">Ajouter au panier</button></p>
+                        </form></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Beat02</td>
+                        <td><div id="aPlayer">
+                            <audio controls="">
+                                <source src="../prevBeat02.mp3" type="audio/mpeg">
+                            </audio>
+                        </div></td>
+                        <td><form action="http://localhost/MusicApp/public/index.php/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
+                            <input type="hidden" name="_token" value="10eJUaO68yRcE8WQv4YVkTskc89WEG5DrXr9WRft">
+                            <input type="hidden" name="music" value="11">
+                            <p align="center"><button class="btn btn-info btn-block">Ajouter au panier</button></p>
+                        </form></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Beat03</td>
+                        <td><div id="aPlayer">
+                            <audio controls="">
+                                <source src="../prevBeat03.mp3" type="audio/mpeg">
+                            </audio>
+                        </div></td>
+                        <td><form action="http://localhost/MusicApp/public/index.php/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
+                            <input type="hidden" name="_token" value="10eJUaO68yRcE8WQv4YVkTskc89WEG5DrXr9WRft">
+                            <input type="hidden" name="music" value="12">
+                            <p align="center"><button class="btn btn-info btn-block">Ajouter au panier</button></p>
+                        </form></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Beat001</td>
+                        <td><div id="aPlayer">
+                            <audio controls="">
+                                <source src="../prevBeat001.mp3" type="audio/mpeg">
+                            </audio>
+                        </div></td>
+                        <td><form action="http://localhost/MusicApp/public/index.php/cart/add" name="add_to_cart" method="post" accept-charset="UTF-8">
+                            <input type="hidden" name="_token" value="10eJUaO68yRcE8WQv4YVkTskc89WEG5DrXr9WRft">
+                            <input type="hidden" name="music" value="13">
+                            <p align="center"><button class="btn btn-info btn-block">Ajouter au panier</button></p>
+                        </form></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="container text-center">
+        <h3>Les artistes</h3><br>
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>Photo</td>
+                        <td>Nom</td>
+                        <td>Beats</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>TestName</td>
+                        <td>test@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/1">Voir le profil</a></li></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Pyroman</td>
+                        <td>PyromanBeatz@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/2">Voir le profil</a></li></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Diabi Taylorisme</td>
+                        <td>DiabiTaylorisme@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/3">Voir le profil</a></li></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Hologram Lo'</td>
+                        <td>HologramLo@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/4">Voir le profil</a></li></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Hugz Hefner</td>
+                        <td>HugzHefner@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/5">Voir le profil</a></li></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Label Double X</td>
+                        <td>labelDoubleX@gmail.com</td>
+                        <td><li><a href="http://localhost/MusicApp/public/index.php/user/6">Voir le profil</a></li></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class="container-fluid text-center">
+        <p>Footer Text</p>
+    </footer>
+
+
+
+</div></body></html>
