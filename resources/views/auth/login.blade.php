@@ -1,6 +1,10 @@
-@extends('Templates.mainTemplate')
+@extends('Templates.template2')
 
 @section('content')
+    <br>
+    <br>
+    <br>
+
     <div class="container">
         <br><br><br>
         <div class="row">

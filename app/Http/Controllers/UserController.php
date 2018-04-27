@@ -108,7 +108,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $music=Music::all();
+        $music=Music::all()->where('author','=',$id);
         $user = User::find($id);
 
         return view('User.edit',compact('user','music'));

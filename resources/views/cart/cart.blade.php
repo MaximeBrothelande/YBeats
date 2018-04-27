@@ -1,7 +1,9 @@
-@extends('Templates.mainTemplate')
+@extends('Templates.template2')
 
 @section('content')
-
+<br>
+<br>
+<br>
     <div class="container" style="width:60%">
         <h1>Mon panier</h1>
         <table class="table">

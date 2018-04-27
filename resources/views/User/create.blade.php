@@ -1,10 +1,12 @@
 <!-- FORMULAIRE D'UPLOAD DE MUSIQUES -->
-@extends('Templates.userTemplate')
+@extends('Templates.template3')
 
 @section('title','Ajout de beat')
 
 @section('content')
-
+<br>
+<br>
+<br>
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-1 ">

@@ -1,7 +1,11 @@
-@extends('Templates.userTemplate')
+@extends('Templates.template3')
 
 
 @section('content')
+    <br>
+    <br>
+    <br>
+
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-1 ">
@@ -17,7 +21,7 @@
                 <div class="col-sm-3">
                     <div class="well owi12">
 
-                        <p>photo</p>
+                        <img src="../{{$user->profile_pic}}">
                     </div>
                 </div>
                 <div class="col-sm-3">

@@ -1,9 +1,11 @@
-@extends('Templates.userTemplate')
+@extends('Templates.template3')
 
 @section('title','Editer mon profil')
 
 @section('content')
-
+    <br>
+    <br>
+    <br>
 
 {{ Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT')) }}
     <div class="container-fluid">
@@ -21,7 +23,7 @@
                     <div class="col-sm-3 owi12">
                         <div class="well">
 
-                            <p>photo</p>
+                            <p></p>
                         </div>
                     </div>
                     <div class="col-sm-3">

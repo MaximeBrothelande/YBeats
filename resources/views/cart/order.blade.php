@@ -1,8 +1,11 @@
-@extends('Templates.mainTemplate')
+@extends('Templates.template2')
 
 @section('title','Commandes')
 
 @section('content')
+    <br>
+    <br>
+    <br>
     <div class="container" style="width:60%">
         <h3>Mes commandes</h3>
         <div class="menu">
